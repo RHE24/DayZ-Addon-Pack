@@ -3,11 +3,7 @@ private["_exitWith","_position","_display","_object","_handle"];
 _exitWith = "nil";
 
 // close the gear display when player starts to deploy
-disableSerialization;
-_display = findDisplay 106;
-if(!(isNull _display)) then {
-    _display closeDisplay 0;
-};
+call DZEF_fnc_closeGearDisplay;
 
 // check these conditions to make sure it's okay to start deploying, if it's not, we'll get a message back
 {
@@ -17,7 +13,7 @@ if(!(isNull _display)) then {
 } forEach [
     [(getPlayerUID player) in DZE_DEPLOYABLE_ADMINS,          "admin"],
     [!([player,_this] call getHasDeployableParts),     format["You need %1 to build %2",str (_this call getDeployableParts),(_this call getDeployableDisplay)]],
-    [!(call fnc_can_do),                               format["You can't build a %1 right now.",(_this call getDeployableDisplay)]],
+    [!(call DZEF_fnc_can_do),                          format["You can't build a %1 right now.",(_this call getDeployableDisplay)]],
     [(player getVariable["combattimeout", 0]) >= time, format["Can't build a %1 while in combat!",(_this call getDeployableDisplay)]],
     [DZE_DEPLOYING,                                           "You are already building something!"],
     [DZE_PACKING,                                             "You are already packing something!"]
@@ -46,9 +42,9 @@ if(!DZE_DEPLOYING_SUCCESSFUL) then {
 
     // notify of despawn if it's not a permanent vehicle
     if (!(_this call getPermanent)) then { 
-        cutText ["Warning: Deployed vehicles DO NOT SAVE after server restart!", "PLAIN DOWN"]; 
+        cutText [format["WARNING: The %1 is temporary and WILL NOT SAVE after server restart!",(_this call getDeployableDisplay)], "PLAIN DOWN"]; 
     } else {
-        cutText ["This vehicle is permanent and will persist through server restarts!", "PLAIN DOWN"]; 
+        cutText [format["The %1 is permanent and will persist through server restarts!",(_this call getDeployableDisplay)], "PLAIN DOWN"]; 
     };
 };
 

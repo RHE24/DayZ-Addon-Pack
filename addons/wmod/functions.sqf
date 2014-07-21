@@ -242,19 +242,19 @@ fnc_wmod_openWeaponModInventory = {
                     };
                 } forEach DZE_WEAPON_MODS;
                 _hint = "<t align='left'>";
-                _hint = _hint + "<t size='1.2' align='center' color='#33b5e5'>Weapon Mod Inventory</t><br/>";
+                _hint = _hint + format["<t size='1.2' align='center' color='%1'>Weapon Mod Inventory</t><br/>",DZE_COLOR_PRIMARY_HEX];
                 if(_weapon != "") then {
                     _hint = _hint + format["<img size='4' align='center' image='%1'/><br/>",getText(configFile >> "CfgWeapons" >> _weapon >> "picture")];
-                    _hint = _hint + format["<t size='1.2' align='center'>[<t color='#ffbb33'>%1</t>]</t><br/>",getText(configFile >> "CfgWeapons" >> _weapon >> "displayName")];
+                    _hint = _hint + format["<t size='1.2' align='center'>[<t color='%2'>%1</t>]</t><br/>",getText(configFile >> "CfgWeapons" >> _weapon >> "displayName"),DZE_COLOR_PRIMARY_HEX];
                 };
                 { 
                     switch (true) do {
-                        case ((_x select 0) in _upgrades  ): { _color = "#33b5e5"; };
+                        case ((_x select 0) in _upgrades  ): { _color = DZE_COLOR_PRIMARY_HEX; };
                         default                              { _color = "#ffffff"; };
                     };
-                    _hint = _hint + format["<img size='2.5' image='%2'/> <t align='center'><t color='%4'>%1</t>:</t> <t align='right' color='#ffbb33'>%3</t><br/>",_x select 0,_x select 1,_x select 2,_color];
+                    _hint = _hint + format["<img size='2.5' image='%2'/> <t align='center'><t color='%4'>%1</t>:</t> <t align='right' color='%5'>%3</t><br/>",_x select 0,_x select 1,_x select 2,_color,DZE_COLOR_WARNING_HEX];
                 } forEach (call fnc_wmod_getCountArray);
-                _hint = _hint + "<t align='center' color='#ff4444'>Unused weapon mods do NOT save with server restart!</t></t>";
+                _hint = _hint + format["<t align='center' color='%1'>Unused weapon mods do NOT save with server restart!</t></t>",DZE_COLOR_DANGER_HEX];
                 hintSilent parseText _hint;
                 sleep 0.5;
             };

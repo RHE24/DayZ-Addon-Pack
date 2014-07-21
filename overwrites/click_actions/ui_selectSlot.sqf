@@ -55,7 +55,7 @@ if (_button == 1) then {
         _menu ctrlSetEventHandler ["ButtonClick",_compile];
     };
 
-    //### BEGIN MODIFIED CODE: extra click actions
+    //MODIFIED CODE>
     {
         private["_classname","_text","_execute","_condition"];
         _classname   = _x select 0;
@@ -73,7 +73,7 @@ if (_button == 1) then {
             _numActions = _numActions + 1;
         };
     } forEach DZE_CLICK_ACTIONS;
-    //### END MODIFIED CODE: extra click actions
+    //<MODIFIED CODE
 
     _pos set [3,_height];
     //hint format["Obj: %1 \nHeight: %2\nPos: %3",_item,_height,_grpPos];       
