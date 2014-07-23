@@ -5,9 +5,9 @@ diag_log text "TAKECLOTHES: initializing...";
 } forEach ((configFile >> "CfgSurvival" >> "Skins") call DZEF_fnc_getClasses);
 DZE_TAKECLOTHES_LIST = [];
 {
-    DZE_TAKECLOTHES_LIST = DZE_TAKECLOTHES_LIST set [count DZE_TAKECLOTHES_LIST,_x select 0];
+    DZE_TAKECLOTHES_LIST set [count DZE_TAKECLOTHES_LIST,_x select 0];
 } forEach DZE_TAKECLOTHES_MAP;
-diag_log text format["TAKECLOTHES: Added %1 base clothing matches...",count DZ_TAKECLOTHES_MATCH];
+diag_log text format["TAKECLOTHES: Added %1 base clothing matches...",count DZE_TAKECLOTHES_MAP];
 [] spawn {
     private ["_isTargetSelf","_targetClassName","_isTargetAlive","_canStripTarget","_isTargetStripped","_isInStripRange"];
     diag_log text "TAKECLOTHES: waiting for login...";
