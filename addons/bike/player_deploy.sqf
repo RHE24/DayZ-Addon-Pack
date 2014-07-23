@@ -367,7 +367,7 @@ if (_hasrequireditem) then {
             _dir = getDir _object;
             _position = getPosATL _object;
             //diag_log format["DEBUG BUILDING POS: %1", _position];
-            deleteVehicle _object;
+            deleteVehicle _object; hideObject _object;
         };
 
         if(_location1 distance _location2 > 5) exitWith {
@@ -375,7 +375,7 @@ if (_hasrequireditem) then {
             _cancel = true;
             _reason = "You've moved to far away from where you started building (within 5 meters)";
             detach _object;
-            deleteVehicle _object;
+            deleteVehicle _object; hideObject _object;
         };
 
         if(abs(_objHDiff) > 5) exitWith {
@@ -383,7 +383,7 @@ if (_hasrequireditem) then {
             _cancel = true;
             _reason = "Cannot move up || down more than 5 meters";
             detach _object;
-            deleteVehicle _object;
+            deleteVehicle _object; hideObject _object;
         };
 
         if (player getVariable["combattimeout", 0] >= time) exitWith {
@@ -391,7 +391,7 @@ if (_hasrequireditem) then {
             _cancel = true;
             _reason = (localize "str_epoch_player_43");
             detach _object;
-            deleteVehicle _object;
+            deleteVehicle _object; hideObject _object;
         };
 
         if (DZE_cancelBuilding) exitWith {
@@ -399,7 +399,7 @@ if (_hasrequireditem) then {
             _cancel = true;
             _reason = "Cancelled building.";
             detach _object;
-            deleteVehicle _object;
+            deleteVehicle _object; hideObject _object;
         };
     };
 
@@ -612,7 +612,7 @@ if (_hasrequireditem) then {
                     //### END MODIFIED CODE: player deploy
                 };
             } else {
-                deleteVehicle _tmpbuilt;
+                deleteVehicle _tmpbuilt; hideObject _tmpbuilt;
                 cutText [(localize "str_epoch_player_46") , "PLAIN DOWN"];
             };
 
@@ -623,7 +623,7 @@ if (_hasrequireditem) then {
                 player playActionNow "stop";
             };
 
-            deleteVehicle _tmpbuilt;
+            deleteVehicle _tmpbuilt; hideObject _tmpbuilt;
 
             cutText [(localize "str_epoch_player_46") , "PLAIN DOWN"];
         };
