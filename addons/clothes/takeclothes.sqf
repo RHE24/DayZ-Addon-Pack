@@ -1,5 +1,8 @@
 private ["_model","_m","_s","_result","_clothesName","_added"];
 
+if(DZE_TAKECLOTHES_BUSY) exitWith {taskHint ["You are already busy taking clothes!", DZE_COLOR_DANGER, "taskFailed"];};
+
+DZE_TAKECLOTHES_BUSY = true;
 DZE_TAKECLOTHES_CURRENT_BODY = _this select 3;
 _model = typeOf DZE_TAKECLOTHES_CURRENT_BODY;
 
@@ -20,7 +23,7 @@ S_PLAYER_CLOTHES = -1;
             _added = [player,_s] call BIS_fnc_invAdd;
             if (_added) then {
                 DZE_TAKECLOTHES_CURRENT_BODY setVariable["clothesTaken",true,true];
-                result = format["You took some %1 clothes from the body!",_clothesName];
+                _result = format["You took some %1 clothes from the body!",_clothesName];
                 hint _result;
                 taskHint [_result, DZE_COLOR_PRIMARY, "taskDone"];
             } else {
@@ -37,3 +40,4 @@ S_PLAYER_CLOTHES = -1;
         if (true) exitWith {};
     };
 } forEach DZE_TAKECLOTHES_MAP;
+DZE_TAKECLOTHES_BUSY = false;
