@@ -24,4 +24,12 @@ if(DZE_CLICK_ACTIONS_ENABLE) then {
         diag_log text format["DZAP: loading clothes addon..."];
         call compile preprocessFileLineNumbers "addons\clothes\init.sqf";
     };
+    if(DZE_KITS_ADDON_ENABLE) then {
+        diag_log text format["DZAP: loading kits addon..."];
+        call compile preprocessFileLineNumbers "addons\kits\init.sqf";
+    };
+    if(DZE_MAP_MARKER_ADDON_ENABLE) then {
+        diag_log text format["DZAP: loading map addon..."];
+        call compile preprocessFileLineNumbers "addons\map\init.sqf";
+    };
 };

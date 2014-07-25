@@ -52,9 +52,7 @@ DZE_CLICK_ACTIONS_ENABLE = true;
 DZE_CLICK_ACTIONS = [
     ["ItemGPS","Scan Nearby","if(isNil 'DZE_CLICK_ACTIONS_GPS_RANGE') then {DZE_CLICK_ACTIONS_GPS_RANGE = 1500;};DZE_CLICK_ACTIONS_ZOMBIE_COUNT = count ((position player) nearEntities ['zZombie_Base',DZE_CLICK_ACTIONS_GPS_RANGE]); DZE_CLICK_ACTIONS_MAN_COUNT = count ((position player) nearEntities ['CAManBase',DZE_CLICK_ACTIONS_GPS_RANGE]);cutText[format['Within %1 Meters: %2 AI/players, %3 zombies, %4 vehicles',DZE_CLICK_ACTIONS_GPS_RANGE,DZE_CLICK_ACTIONS_MAN_COUNT - DZE_CLICK_ACTIONS_ZOMBIE_COUNT,count ((position player) nearEntities ['zZombie_Base',DZE_CLICK_ACTIONS_GPS_RANGE]),count ((position player) nearEntities ['allVehicles',DZE_CLICK_ACTIONS_GPS_RANGE]) - DZE_CLICK_ACTIONS_MAN_COUNT],'PLAIN DOWN'];","true"],
     ["ItemGPS","Range Up"   ,"if(isNil 'DZE_CLICK_ACTIONS_GPS_RANGE') then {DZE_CLICK_ACTIONS_GPS_RANGE = 1500;};DZE_CLICK_ACTIONS_GPS_RANGE = (DZE_CLICK_ACTIONS_GPS_RANGE + 100) min 2500; cutText[format['GPS RANGE: %1',DZE_CLICK_ACTIONS_GPS_RANGE],'PLAIN DOWN'];","true"],
-    ["ItemGPS","Range Down" ,"if(isNil 'DZE_CLICK_ACTIONS_GPS_RANGE') then {DZE_CLICK_ACTIONS_GPS_RANGE = 1500;};DZE_CLICK_ACTIONS_GPS_RANGE = (DZE_CLICK_ACTIONS_GPS_RANGE - 100) max 1000;  cutText[format['GPS RANGE: %1',DZE_CLICK_ACTIONS_GPS_RANGE],'PLAIN DOWN'];","true"],
-    ["ItemGPS","Toggle Map Marker","execVM 'overwrites\click_actions\examples\marker.sqf';","true"],
-    ["ItemMap","Toggle Map Marker","execVM 'overwrites\click_actions\examples\marker.sqf';","true"]
+    ["ItemGPS","Range Down" ,"if(isNil 'DZE_CLICK_ACTIONS_GPS_RANGE') then {DZE_CLICK_ACTIONS_GPS_RANGE = 1500;};DZE_CLICK_ACTIONS_GPS_RANGE = (DZE_CLICK_ACTIONS_GPS_RANGE - 100) max 1000;  cutText[format['GPS RANGE: %1',DZE_CLICK_ACTIONS_GPS_RANGE],'PLAIN DOWN'];","true"]
 ];
 
 //##### DEPLOYABLE VEHICLES AND BUILDINGS CONFIGURATION ##########################################################################################################################################################
@@ -415,3 +413,54 @@ DZE_TAKECLOTHES_MAP = [
     ["z_soldier_heavy","Skin_Soldier1_DZ"],
     ["z_soldier_pilot","Skin_RU_Soldier_Crew_DZ"]
 ];
+
+//##### KITS CONFIGURATION ####################################################################################################################################################################
+//##### KITS CONFIGURATION ####################################################################################################################################################################
+//##### KITS CONFIGURATION ####################################################################################################################################################################
+//##### KITS CONFIGURATION ####################################################################################################################################################################
+//##### KITS CONFIGURATION ####################################################################################################################################################################
+
+//  DZE_KITS_ADDON_ENABLE -- If true, kit addon is enabled. If false, kit addon is disabled. REQUIRES DZE_CLICK_ACTIONS_ENABLE = true;
+DZE_KITS_ADDON_ENABLE = true;
+
+//  DZE_KIT_CONFIG -- spawnable donator kits
+//  
+//  DZE_KIT_CONFIG format
+//
+//  DZE_KIT_CONFIG = [
+//      [_name,_contents],
+//      [_name,_contents],
+//      [...more...]
+//  ];
+//
+//  DZE_KIT_CONFIG parameters
+//
+//   parameter    | description                                                          |  type  | example
+//  --------------|----------------------------------------------------------------------|--------|--------
+//  _name         | the name of the kit which is displayed on right clicking a vault     | string | "Donator Kit #1"
+//  _contents     | array in the format of [[_amount,_item],[_amount,_item],[...more..]] | string | [[2,"PartGeneric"],[9,"30m_plot_kit"]]
+//
+DZE_KITS_CONFIG = [
+    ["Donator Kit #1",[[5,"ItemToolbox"],[2,"30m_plot_kit"]]],
+    ["Donator Kit #2",[[2,"PartGeneric"],[9,"30m_plot_kit"]]]
+];
+
+DZE_KITS_ADMINS = ["38130182"];
+
+//##### MAPS CONFIGURATION ####################################################################################################################################################################
+//##### MAPS CONFIGURATION ####################################################################################################################################################################
+//##### MAPS CONFIGURATION ####################################################################################################################################################################
+//##### MAPS CONFIGURATION ####################################################################################################################################################################
+//##### MAPS CONFIGURATION ####################################################################################################################################################################
+
+//  DZE_MAP_MARKER_ADDON_ENABLE -- If true, map marker addon is enabled. If false, map marker addon is disabled. REQUIRES DZE_CLICK_ACTIONS_ENABLE = true;
+DZE_MAP_MARKER_ADDON_ENABLE = true;
+
+// DZE_MAP_MARKER_ALLOW_SELF -- if true, players can use GPS or Map to mark themselves on the map
+DZE_MAP_MARKER_ALLOW_SELF = true;
+
+// DZE_MAP_MARKER_ALLOW_FRIENDLIES -- if true, players can use GPS or Map to mark friendlies on the map
+DZE_MAP_MARKER_ALLOW_FRIENDLIES = true;
+
+// DZE_MAP_MARKER_ALLOW_VEHICLES -- if true, players can use GPS or Map to mark owned vehicles on the map
+DZE_MAP_MARKER_ALLOW_VEHICLES = true;
