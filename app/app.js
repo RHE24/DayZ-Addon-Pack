@@ -1,4 +1,4 @@
-angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap'])
+angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
 .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
     $stateProvider
@@ -62,7 +62,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap'])
         return $scope.activeAddonID === i;
     };
     $scope.scrollTo = function(id) {
-        $location.hash("anchor-" + id);
+        $location.hash(id);
         $anchorScroll();
         $scope.selectAddon(id);
     };
@@ -259,7 +259,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap'])
                             name:       "DZE_TAKECLOTHES_MAP",
                             desc:       "A map of models to skin packages (use this to add clothes to models that aren't exact matches).",
                             format:     ["DZE_TAKECLOTHES_MAP = [","    [_model,_skinPackage],","    [...more...]","];"],
-                            sample:     ["DZE_TAKECLOTHES_MAP = [","    ['z_policeman','Skin_RU_Policeman_DZ'],","[...more...]","];"],
+                            sample:     ["DZE_TAKECLOTHES_MAP = [","    ['z_policeman','Skin_RU_Policeman_DZ'],","    [...more...]","];"],
                             sampleDesc: "Police Skin Can Be Taken From Zombie Police",
                             params:     [
                                 {name: "_model"      , type: "string", example: "'z_policeman'"         , desc: "The name of the model of the dead player/zombie/ai/etc."},

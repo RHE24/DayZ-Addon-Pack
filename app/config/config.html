@@ -2,7 +2,7 @@
     <h2>Configuration / Setup Documentation</h2>
     <h4>These options are all found in the <b>DZAP_config.sqf</b> file in the root of your mission PBO</h4>
     <hr>
-    <div ng-repeat="mod in addon.mods" id="anchor-{{$index}}">
+    <div ng-repeat="mod in addon.mods" id="{{$index}}">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4>{{mod.config.title}}</h4>
@@ -25,11 +25,11 @@
                             <br>
                             {{setting.sampleDesc}}
                             <hr>
-                            <pre>{{setting.sample.join("\n")}}</pre>
+                            <div hljs source="setting.sample.join('\n')"></div>
                         </tab>
                         <tab heading="Format">
                             <br>
-                            <pre>{{setting.format.join("\n")}}</pre>
+                            <div hljs source="setting.format.join('\n')"></div>
                         </tab>
                         <tab heading="Parameters" ng-if="setting.params">
                             <div>
