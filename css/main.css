@@ -86,17 +86,13 @@ body {
   background-color: #f5f5f5;
 }
 
-.sidebar {
-    border-right: thick solid #f5f5f5;
+pre {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
 }
 
-
-
-
-
-
-
-
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 /* ==========================================================================
    Media Queries

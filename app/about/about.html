@@ -19,7 +19,7 @@
             {{activeAddon.name}}
         </h1>
         <div class="text-right">
-            <a href="">
+            <a ng-href="#config/{{activeAddonID}}">
                 <small>
                     Configuration/Setup Instructions &raquo;
                 </small>
@@ -48,10 +48,14 @@
             <i class="fa fa-download"></i>
             Download DZAP
         </a>
+        <a ui-sref="install" class="btn btn-info btn-block">
+            <i class="fa fa-question"></i>
+            Installation
+        </a>
         <hr>
         <h3 class="text-center">Included Mods</h3>
         <ul class="nav nav-pills nav-stacked">
-            <li ng-class="{active: activeAddonID == $index}" ng-repeat="mod in addon.mods" ng-click="selectAddon($index)" tooltip-html-unsafe="{{mod.desc[0]}}" tooltip-append-to-body="true" tooltip-placement="right"><a href="">{{mod.name}}</a></li>
+            <li ng-class="{active: activeAddonID == $index}" ng-repeat="mod in addon.mods" tooltip-html-unsafe="{{mod.desc[0]}}" tooltip-append-to-body="true" tooltip-placement="right"><a href="#/about/{{$index}}">{{mod.name}}</a></li>
         </ul>
     </div>
 </div>
