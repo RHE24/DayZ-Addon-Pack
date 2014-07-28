@@ -71,6 +71,9 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
         $location.hash("wrap");
         $anchorScroll();
     };
+    $scope.clearSearch = function() {
+        $scope.search = "";
+    };
     if(typeof $stateParams.id == "string" && $stateParams.id !== "") {
         var id = Number($stateParams.id);
         $scope.scrollTo(id);

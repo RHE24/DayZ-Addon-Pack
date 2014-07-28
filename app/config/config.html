@@ -2,7 +2,7 @@
     <h2>Configuration / Setup Documentation</h2>
     <h4>These options are all found in the <b>DZAP_config.sqf</b> file in the root of your mission PBO</h4>
     <hr>
-    <div ng-repeat="mod in addon.mods" id="{{$index}}">
+    <div ng-repeat="mod in addon.mods | filter:search" id="{{$index}}">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4>{{mod.config.title}}</h4>
@@ -10,7 +10,7 @@
             <div class="panel-body">
                 {{mod.config.desc}}
             </div>
-            <div ng-repeat="setting in mod.config.settings">
+            <div ng-repeat="setting in mod.config.settings | filter:search">
                 <div accordion="" close-others="true" class="col-sm-12">
                     <div accordion-group="" heading="setting.name" is-open="setting.open">
                         <div accordion-heading="">
@@ -73,5 +73,17 @@
         </ul>
         <hr>
         <a ng-click="scrollTop()" class="btn btn-default btn-block">To Top <i class="fa fa-level-up"></i></a>
+        <hr>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-search"></i>
+            </div>
+            <input class="form-control" type="text" placeholder="Search Anything..." ng-model="search"/>
+            <div class="input-group-btn">
+                <button class="btn btn-primary" tooltip="Clear Input" ng-click="clearSearch()">
+                    <i class="fa fa-refresh"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </div>
