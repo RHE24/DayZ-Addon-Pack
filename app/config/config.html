@@ -10,9 +10,9 @@
             <div class="panel-body">
                 {{mod.config.desc}}
             </div>
-            <div accordion="" close-others="true" class="col-sm-12">
-                <div ng-repeat="setting in mod.config.settings">
-                    <div accordion-group="" is-open="setting.open">
+            <div ng-repeat="setting in mod.config.settings">
+                <div accordion="" close-others="true" class="col-sm-12">
+                    <div accordion-group="" heading="setting.name" is-open="setting.open">
                         <div accordion-heading="">
                             <div tooltip="{{setting.desc}}" tooltip-placement="left">
                                 {{setting.name}}
