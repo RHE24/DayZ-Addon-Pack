@@ -32,26 +32,24 @@
                                 <br>
                                 <div hljs source="setting.format.join('\n')"></div>
                             </div>
-                            <div tab="" heading="Parameters" ng-if="setting.params">
-                                <div>
-                                    <hr>
-                                    <table class="table table-responsive table-striped table-bordered">
-                                        <thead>
-                                            <th>Parameter</th>
-                                            <th>Description</th>
-                                            <th>Type</th>
-                                            <th>Example</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="param in setting.params">
-                                                <td>{{param.name}}</td>
-                                                <td>{{param.desc}}</td>
-                                                <td>{{param.type}}</td>
-                                                <td>{{param.example}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div ng-if="setting.params">
+                                <hr>
+                                <table class="table table-responsive table-striped table-bordered">
+                                    <thead>
+                                        <th>Parameter</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                        <th>Example</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="param in setting.params">
+                                            <td>{{param.name}}</td>
+                                            <td>{{param.desc}}</td>
+                                            <td>{{param.type}}</td>
+                                            <td>{{param.example}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
