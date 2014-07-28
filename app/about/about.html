@@ -1,1 +1,57 @@
-ABOUT
+<div class="col-sm-8">
+    <div ng-hide="isAddonSelected()" class="jumbotron">
+        <marked>
+### This page lists general information regarding the addons that are included in **DZAP**.
+
+-----
+
+#### Each addon is highly customizable and can be enabled or disabled at will in the configuration file.
+
+#### Click an addon on the right to view the features and some screenshots of the addon in action. &raquo;
+
+-----
+
+##### For more information about specifically configuring addons, visit the [configuration](#/config) page.
+        </marked>
+    </div>
+    <div ng-show="isAddonSelected()">
+        <h1 class="text-center">
+            {{activeAddon.name}}
+        </h1>
+        <div class="text-right">
+            <a href="">
+                <small>
+                    Configuration/Setup Instructions &raquo;
+                </small>
+            </a>
+        </div>
+        <div ng-hide="activeAddon.desc.length == 0">
+            <hr>
+            <h3>Description</h3>
+            <div marked="activeAddon.desc.join('\n\n')"></div>
+        </div>
+        <div ng-hide="activeAddon.features.length == 0">
+            <hr>
+            <h3>Features</h3>
+            <div marked="activeAddon.features.join('\n\n')"></div>
+        </div>
+        <div ng-show="activeAddon.hasGallery">
+            <hr>
+            <h3>Gallery</h3>
+            <iframe class="imgur-album" width="100%" height="550" frameborder="0" ng-src="{{activeAddon.gallery}}" ng-show="activeAddon.hasGallery"></iframe>
+        </div>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="affix">
+        <a href="{{addon.downloadLink}}" target="_blank" class="btn btn-success btn-block">
+            <i class="fa fa-download"></i>
+            Download DZAP
+        </a>
+        <hr>
+        <h3 class="text-center">Included Mods</h3>
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-class="{active: activeAddonID == $index}" ng-repeat="mod in addon.mods" ng-click="selectAddon($index)" tooltip-html-unsafe="{{mod.desc[0]}}" tooltip-append-to-body="true" tooltip-placement="right"><a href="">{{mod.name}}</a></li>
+        </ul>
+    </div>
+</div>

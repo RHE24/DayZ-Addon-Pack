@@ -1,1 +1,16 @@
-INSTALL
+<marked>
+#Installation
+
+Installation is probably the easiest part about DZAP.
+
+1. Download the [DZAP zip file](https://github.com/mudzereli/DayZ-Addon-Pack/archive/master.zip)
+2. Move the following files from the downloaded zip to the **root of your mission pbo**
+    - the entire **addons** directory
+    - the entire **overwrites** directory
+    - **DZAP_config.sqf**
+3. find this line in your mission file **init.sqf** (**warning**: if you have a custom compiles file, find that line instead of the one below!)
+    * ```call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";```
+4. place this line directly after the line you found
+    * ```call compile preprocessFileLineNumbers "addons\dzap\init.sqf";```
+5. edit **DZAP_config.sqf** to configure the included mods to your liking. ([see configuration section for more info](#config))
+</marked>
