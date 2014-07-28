@@ -4,25 +4,25 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap'])
 
     $stateProvider
     .state("home", {
-        url: "/home",
+        url: "home",
         templateUrl: "app/home/home.html",
         controller: "HomeController"
     })
     .state("about", {
-        url: "/about",
+        url: "about",
         templateUrl: "app/about/about.html",
         controller: "AboutController"
     })
     .state("install", {
-        url: "/install",
+        url: "install",
         templateUrl: "app/install/install.html"
     })
     .state("config", {
-        url: "/config",
+        url: "config",
         templateUrl: "app/config/config.html"
     })
     .state("contact", {
-        url: "/contact",
+        url: "contact",
         templateUrl: "app/contact/contact.html"
     });
     marked.setOptions({gfm: true});
