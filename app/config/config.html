@@ -11,48 +11,50 @@
                 {{mod.config.desc}}
             </div>
             <div accordion="" close-others="true" class="col-sm-12">
-                <div accordion-group="" ng-repeat="setting in mod.config.settings" is-open="setting.open">
-                    <div accordion-heading="">
-                        <div tooltip="{{setting.desc}}" tooltip-placement="left">
-                            {{setting.name}}
-                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': setting.open, 'glyphicon-chevron-right': !setting.open}"></i>
-                        </div>
-                    </div>
-                    <small>{{setting.desc}}</small>
-                    <hr>
-                    <tabset>
-                        <tab heading="Sample">
-                            <br>
-                            {{setting.sampleDesc}}
-                            <hr>
-                            <div hljs source="setting.sample.join('\n')"></div>
-                        </tab>
-                        <tab heading="Format">
-                            <br>
-                            <div hljs source="setting.format.join('\n')"></div>
-                        </tab>
-                        <tab heading="Parameters" ng-if="setting.params">
-                            <div>
-                                <hr>
-                                <table class="table table-responsive table-striped table-bordered">
-                                    <thead>
-                                        <th>Parameter</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
-                                        <th>Example</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="param in setting.params">
-                                            <td>{{param.name}}</td>
-                                            <td>{{param.desc}}</td>
-                                            <td>{{param.type}}</td>
-                                            <td>{{param.example}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                <div ng-repeat="setting in mod.config.settings">
+                    <div accordion-group="" is-open="setting.open">
+                        <div accordion-heading="">
+                            <div tooltip="{{setting.desc}}" tooltip-placement="left">
+                                {{setting.name}}
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': setting.open, 'glyphicon-chevron-right': !setting.open}"></i>
                             </div>
-                        </tab>
-                    </tabset>
+                        </div>
+                        <small>{{setting.desc}}</small>
+                        <hr>
+                        <tabset>
+                            <tab heading="Sample">
+                                <br>
+                                {{setting.sampleDesc}}
+                                <hr>
+                                <div hljs source="setting.sample.join('\n')"></div>
+                            </tab>
+                            <tab heading="Format">
+                                <br>
+                                <div hljs source="setting.format.join('\n')"></div>
+                            </tab>
+                            <tab heading="Parameters" ng-if="setting.params">
+                                <div>
+                                    <hr>
+                                    <table class="table table-responsive table-striped table-bordered">
+                                        <thead>
+                                            <th>Parameter</th>
+                                            <th>Description</th>
+                                            <th>Type</th>
+                                            <th>Example</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="param in setting.params">
+                                                <td>{{param.name}}</td>
+                                                <td>{{param.desc}}</td>
+                                                <td>{{param.type}}</td>
+                                                <td>{{param.example}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </tab>
+                        </tabset>
+                    </div>
                 </div>
             </div>
             <div class="clearfix"></div>
