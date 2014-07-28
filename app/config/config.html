@@ -21,18 +21,18 @@
                         </div>
                         <small>{{setting.desc}}</small>
                         <hr>
-                        <tabset>
-                            <tab heading="Sample">
+                        <div tabset="">
+                            <div tab="" heading="Sample">
                                 <br>
                                 {{setting.sampleDesc}}
                                 <hr>
                                 <div hljs source="setting.sample.join('\n')"></div>
-                            </tab>
-                            <tab heading="Format">
+                            </div>
+                            <div tab="" heading="Format">
                                 <br>
                                 <div hljs source="setting.format.join('\n')"></div>
-                            </tab>
-                            <tab heading="Parameters" ng-if="setting.params">
+                            </div>
+                            <div tab="" heading="Parameters" ng-if="setting.params">
                                 <div>
                                     <hr>
                                     <table class="table table-responsive table-striped table-bordered">
@@ -52,8 +52,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </tab>
-                        </tabset>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
