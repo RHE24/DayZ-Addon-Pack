@@ -10,14 +10,14 @@
             <div class="panel-body">
                 {{mod.config.desc}}
             </div>
-            <accordion close-others="true" class="col-sm-12">
-                <accordion-group ng-repeat="setting in mod.config.settings" is-open="setting.open">
-                    <accordion-heading>
+            <div accordion="" close-others="true" class="col-sm-12">
+                <div accordion-group="" ng-repeat="setting in mod.config.settings" is-open="setting.open">
+                    <div accordion-heading="">
                         <div tooltip="{{setting.desc}}" tooltip-placement="left">
                             {{setting.name}}
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': setting.open, 'glyphicon-chevron-right': !setting.open}"></i>
                         </div>
-                    </accordion-heading>
+                    </div>
                     <small>{{setting.desc}}</small>
                     <hr>
                     <tabset>
@@ -53,8 +53,8 @@
                             </div>
                         </tab>
                     </tabset>
-                </accordion-group>
-            </accordion>
+                </div>
+            </div>
             <div class="clearfix"></div>
         </div>
     </div>
