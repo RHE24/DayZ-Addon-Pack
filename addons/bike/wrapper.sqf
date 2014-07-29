@@ -5,7 +5,6 @@ getDeployableKitClass = {
     (DZE_DEPLOYABLES select _this) select 0
 };
 
-
 /* this gets the distance of the deployable */
 getDeployableDistanceOffset = {
     (DZE_DEPLOYABLES select _this) select 1
