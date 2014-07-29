@@ -221,7 +221,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
                         {
                             name:       "DZE_MAP_MARKER_FRIENDLY_RANGE",
                             desc:       "Distance within which FRIENDLIES appear on map. Only works if DZE_MAP_MARKER_ALLOW_FRIENDLIES = true.",
-                            format:     ["DZE_MAP_MARKER_FRIENDLY_RANGE = _number"],
+                            format:     ["DZE_MAP_MARKER_FRIENDLY_RANGE = _number;"],
                             sample:     ["DZE_MAP_MARKER_FRIENDLY_RANGE = 3000;"],
                             sampleDesc: "Players Will See FRIENDLIES Within 3000 meters."
                         },

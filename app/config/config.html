@@ -21,12 +21,6 @@
                     <small>{{setting.desc}}</small>
                     <hr>
                     <div tabset="">
-                        <div tab="" heading="Sample">
-                            <br>
-                            {{setting.sampleDesc}}
-                            <hr>
-                            <div hljs source="setting.sample.join('\n')"></div>
-                        </div>
                         <div tab="" heading="Format">
                             <br>
                             <div hljs source="setting.format.join('\n')"></div>
@@ -49,6 +43,12 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                        <div tab="" heading="Example">
+                            <br>
+                            <div hljs source="setting.sample.join('\n')"></div>
+                            <hr>
+                            {{setting.sampleDesc}}
                         </div>
                     </div>
                 </div>
