@@ -207,57 +207,57 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
                         {
                             name:       "DZE_MAP_MARKER_ALLOW_SELF",
                             desc:       "If true, players can mark SELF on the map by right-clicking a Map or GPS.",
-                            format:     ["DZE_MAP_MARKER_ALLOW_SELF = _boolean"],
+                            format:     ["DZE_MAP_MARKER_ALLOW_SELF = _boolean;"],
                             sample:     ["DZE_MAP_MARKER_ALLOW_SELF = true"],
                             sampleDesc: "Players Can Mark SELF On Map"
                         },
                         {
                             name:       "DZE_MAP_MARKER_ALLOW_FRIENDLIES",
                             desc:       "If true, players can mark FRIENDLIES on the map by right-clicking a Map or GPS.",
-                            format:     ["DZE_MAP_MARKER_ALLOW_FRIENDLIES = _boolean"],
-                            sample:     ["DZE_MAP_MARKER_ALLOW_FRIENDLIES = true"],
+                            format:     ["DZE_MAP_MARKER_ALLOW_FRIENDLIES = _boolean;"],
+                            sample:     ["DZE_MAP_MARKER_ALLOW_FRIENDLIES = true;"],
                             sampleDesc: "Players Can Mark FRIENDLIES On Map"
                         },
                         {
                             name:       "DZE_MAP_MARKER_FRIENDLY_RANGE",
                             desc:       "Distance within which FRIENDLIES appear on map. Only works if DZE_MAP_MARKER_ALLOW_FRIENDLIES = true.",
                             format:     ["DZE_MAP_MARKER_FRIENDLY_RANGE = _number"],
-                            sample:     ["DZE_MAP_MARKER_FRIENDLY_RANGE = 3000"],
+                            sample:     ["DZE_MAP_MARKER_FRIENDLY_RANGE = 3000;"],
                             sampleDesc: "Players Will See FRIENDLIES Within 3000 meters."
                         },
                         {
                             name:       "DZE_MAP_MARKER_ALLOW_VEHICLES",
                             desc:       "If true, players can mark VEHICLES on the map by right-clicking a Map or GPS.",
-                            format:     ["DZE_MAP_MARKER_ALLOW_VEHICLES = _boolean"],
-                            sample:     ["DZE_MAP_MARKER_ALLOW_VEHICLES = true"],
+                            format:     ["DZE_MAP_MARKER_ALLOW_VEHICLES = _boolean;"],
+                            sample:     ["DZE_MAP_MARKER_ALLOW_VEHICLES = true;"],
                             sampleDesc: "Players Can Mark VEHICLES On Map"
                         },
                         {
                             name:       "DZE_MAP_MARKER_VEHICLE_KEY_ONLY",
                             desc:       "If true, players can only see VEHICLES they have the key for on the map by right-clicking a Map or GPS.",
-                            format:     ["DZE_MAP_MARKER_VEHICLE_KEY_ONLY = _boolean"],
-                            sample:     ["DZE_MAP_MARKER_VEHICLE_KEY_ONLY = true"],
+                            format:     ["DZE_MAP_MARKER_VEHICLE_KEY_ONLY = _boolean;"],
+                            sample:     ["DZE_MAP_MARKER_VEHICLE_KEY_ONLY = true;"],
                             sampleDesc: "Players Can Mark VEHICLES They Have Key For On Map"
                         },
                         {
                             name:       "DZE_MAP_MARKER_VEHICLE_RANGE",
                             desc:       "Distance within which VEHICLES appear on map. Only works if DZE_MAP_MARKER_ALLOW_VEHICLES = true.",
-                            format:     ["DZE_MAP_MARKER_VEHICLE_RANGE = _number"],
-                            sample:     ["DZE_MAP_MARKER_VEHICLE_RANGE = 200"],
+                            format:     ["DZE_MAP_MARKER_VEHICLE_RANGE = _number;"],
+                            sample:     ["DZE_MAP_MARKER_VEHICLE_RANGE = 200;"],
                             sampleDesc: "Players Will See VEHICLES Within 200 meters."
                         },
                         {
                             name:       "DZE_MAP_MARKER_ALLOW_ZOMBIES",
                             desc:       "If true, players can mark ZOMBIES on the map by right-clicking a Map or GPS.",
-                            format:     ["DZE_MAP_MARKER_ALLOW_ZOMBIES = _boolean"],
-                            sample:     ["DZE_MAP_MARKER_ALLOW_ZOMBIES = true"],
+                            format:     ["DZE_MAP_MARKER_ALLOW_ZOMBIES = _boolean;"],
+                            sample:     ["DZE_MAP_MARKER_ALLOW_ZOMBIES = true;"],
                             sampleDesc: "Players Can Mark ZOMBIES On Map"
                         },
                         {
                             name:       "DZE_MAP_MARKER_ZOMBIE_RANGE",
                             desc:       "Distance within which ZOMBIES appear on map. Only works if DZE_MAP_MARKER_ALLOW_ZOMBIES = true.",
-                            format:     ["DZE_MAP_MARKER_ZOMBIE_RANGE = _number"],
-                            sample:     ["DZE_MAP_MARKER_ZOMBIE_RANGE = 100"],
+                            format:     ["DZE_MAP_MARKER_ZOMBIE_RANGE = _number;"],
+                            sample:     ["DZE_MAP_MARKER_ZOMBIE_RANGE = 100;"],
                             sampleDesc: "Players Will See ZOMBIES Within 100 meters."
                         }
                     ]
