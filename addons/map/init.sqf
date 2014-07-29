@@ -6,7 +6,7 @@ DZE_SELF_MARKER_TOGGLE = false;
 DZE_FRIENDLY_MARKER_TOGGLE = false;
 DZE_VEHICLE_MARKER_TOGGLE = false;
 DZE_ZOMBIE_MARKER_TOGGLE = false;
-DZE_MAP_MARKER_LIST = [];
+DZE_MAP_MARKER_UIDS = [];
 if(DZE_MAP_MARKER_ALLOW_SELF) then {
     DZE_CLICK_ACTIONS set [count DZE_CLICK_ACTIONS,["ItemGPS","Toggle Self","call fnc_map_marker_self_toggle;","true"]];
     DZE_CLICK_ACTIONS set [count DZE_CLICK_ACTIONS,["ItemMap","Toggle Self","call fnc_map_marker_self_toggle;","true"]];

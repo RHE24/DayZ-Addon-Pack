@@ -464,3 +464,18 @@ DZE_MAP_MARKER_ALLOW_FRIENDLIES = true;
 
 // DZE_MAP_MARKER_ALLOW_VEHICLES -- if true, players can use GPS or Map to mark owned vehicles on the map
 DZE_MAP_MARKER_ALLOW_VEHICLES = true;
+
+// DZE_MAP_MARKER_ALLOW_ZOMBIES -- if true, players can use GPS or Map to mark Zombie on the map
+DZE_MAP_MARKER_ALLOW_ZOMBIES = true;
+
+// DZE_MAP_MARKER_VEHICLE_KEY_ONLY -- Only show vehicles that you have a key for? Only works if DZE_MAP_MARKER_ALLOW_VEHICLES = true;
+DZE_MAP_MARKER_VEHICLE_KEY_ONLY = true;
+
+// DZE_MAP_MARKER_ZOMBIE_RANGE -- Zombie Radar Radius. Only works if DZE_MAP_MARKER_ALLOW_ZOMBIES = true;
+DZE_MAP_MARKER_ZOMBIE_RANGE = 100;
+
+// DZE_MAP_MARKER_VEHICLE_RANGE -- Vehicle Radar Radius. Only works if DZE_MAP_MARKER_ALLOW_VEHICLES = true;
+DZE_MAP_MARKER_VEHICLE_RANGE = 5000;
+
+// DZE_MAP_MARKER_FRIENDLY_RANGE -- Friendly Radar Radius. Only works if DZE_MAP_MARKER_ALLOW_FRIENDLY = true;
+DZE_MAP_MARKER_FRIENDLY_RANGE = 5000;
