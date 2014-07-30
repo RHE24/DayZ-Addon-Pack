@@ -4,13 +4,11 @@
             {{addon.name}} {{addon.version[0].name}}
         </h1>
         <p>
-            A customizable addon pack that is easy to install and adds <a ui-sref="config">many configurable options</a> to your <b>DayZ Epoch/Overpoch</b> server.
+            A customizable addon pack that is easy to install and adds <a ui-sref="config">tons of configurable options</a> to your <b>DayZ Epoch/Overpoch</b> server.
             Includes configurable options for
-            <span class="label label-default">Map Markers</span>
-            <span class="label label-default">Deployable Buildings/Vehicles</span>
-            <span class="label label-default">Clothes Taking</span>
-            <span class="label label-default">Weapon Mods</span>
-            <span class="label label-default">Suicide</span>
+            <span ng-repeat="mod in addon.mods">
+                <a href="#about/{{$index}}" class="label label-default">{{mod.name}}</a>
+            </span>
             and more!
         </p>
         <div class="clearfix"></div>
@@ -21,19 +19,48 @@
         <div class="clearfix"></div>
     </div>
 </div>
-
+<hr>
 <div class="row">
-    <div class="col-sm-4" ng-repeat="feature in features">
-        <div class="panel panel-default">
-            <div class="panel-heading text-center">
-                <i class="fa fa-fw fa-lg {{feature.icon}} pull-right"></i>
-                <strong>
-                    {{feature.name}}
-                </strong>
-            </div>
-            <div class="panel-body">
-                {{feature.desc}}
-            </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-6" ng-repeat="feature in features">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <i class="fa fa-fw fa-lg {{feature.icon}} pull-right"></i>
+                        <strong>
+                            {{feature.name}}
+                        </strong>
+                    </div>
+                    <div class="panel-body">
+                        {{feature.desc}}
+                    </div>
+                </div>
+            </div>      
         </div>
-    </div>      
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Change Log 
+                <span class="pull-right">
+                    <i class="fa fa-gear"></i> 
+                    {{addon.version[0].name}} 
+                </span>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>Version</th>
+                    <th>Date</th>
+                    <th>Change</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="version in addon.version | limitTo: 7">
+                        <td>{{version.name}}</td>
+                        <td>{{version.date}}</td>
+                        <td>{{version.desc}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

@@ -1,21 +1,25 @@
-<h1>Installation</h1>
-<hr>
-<p>Installation is probably the easiest part about DZAP.</p>
-<ol>
-    <li><a href="https://github.com/mudzereli/DayZ-Addon-Pack/archive/master.zip">Download the DZAP zip file</a></li>
-    <li>Move the following files from the downloaded zip to the <b>root of your mission pbo</b></li>
-    <ul>
-        <li>the entire <b>addons</b> directory</li>
-        <li>the entire <b>overwrites</b> directory</li>
-        <li><b>DZAP_config.sqf</b></li>
-    </ul>
-    <li>Find this line in your mission file <b>init.sqf</b> (<b>warning</b> if you have a custom compiles file, find that line instead of the one below!)</li>
-    <ul>
-        <li><code>call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";</code></li>
-    </ul>
-    <li>Place this line directly after the line you found</li>
-    <ul>
-        <li><code>call compile preprocessFileLineNumbers "addons\dzap\init.sqf";</code></li>
-    </ul>
-    <li>edit <b>DZAP_config.sqf</b> to configure the included mods to your liking. (<a ui-sref="config">see configuration section for more info]</a>)</li>
-</ol>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Installation
+    </div>
+    <div class="panel-body">
+        <ol>
+            <li><a href="https://github.com/mudzereli/DayZ-Addon-Pack/archive/master.zip">Download the DZAP zip file</a></li>
+            <li>Move the following files from the downloaded zip to the <b>root of your mission pbo</b></li>
+            <ul>
+                <li>the entire <b>addons</b> directory</li>
+                <li>the entire <b>overwrites</b> directory</li>
+                <li><b>DZAP_config.sqf</b></li>
+            </ul>
+            <li>Find this line in your mission file <b>init.sqf</b> (<b>warning</b> if you have a custom compiles file, find that line instead of the one below!)</li>
+            <ul>
+                <li><code>call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";</code></li>
+            </ul>
+            <li>Place this line directly after the line you found</li>
+            <ul>
+                <li><code>call compile preprocessFileLineNumbers "addons\dzap\init.sqf";</code></li>
+            </ul>
+            <li>edit <b>DZAP_config.sqf</b> to configure the included mods to your liking. (<a ui-sref="config">see configuration section for more info]</a>)</li>
+        </ol>
+    </div>
+</div>

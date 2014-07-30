@@ -38,12 +38,12 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
     ];
 }])
 .controller('AboutController',['$scope','$stateParams', function($scope,$stateParams) {
-    $scope.isAddonSelected = function() {
-        return $scope.activeAddonID >= 0;
+    $scope.isAddonSelected = function(i) {
+        return $scope.activeAddonID == i;
     };
     $scope.selectAddon = function(i) {
         $scope.activeAddonID = i;
-        if($scope.isAddonSelected()) {
+        if(i >= -1 && $scope.isAddonSelected(i)) {
             $scope.activeAddon = $scope.addon.mods[i];
         }
     };
@@ -54,29 +54,19 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
     }
 }])
 .controller('ConfigController', ['$scope','$anchorScroll','$location','$stateParams', function($scope,$anchorScroll,$location,$stateParams){
-    $scope.activeAddonID = 0;
     $scope.selectAddon = function(i) {
         $scope.activeAddonID = i;
     };
     $scope.isAddonSelected = function(i) {
         return $scope.activeAddonID === i;
     };
-    $scope.scrollTo = function(id) {
-        $location.hash(id);
-        $anchorScroll();
-        $scope.selectAddon(id);
-    };
-    $scope.scrollTop = function() {
-        $scope.selectAddon(0);
-        $location.hash("wrap");
-        $anchorScroll();
-    };
     $scope.clearSearch = function() {
         $scope.search = "";
     };
+    $scope.activeAddonID = -1;
     if(typeof $stateParams.id == "string" && $stateParams.id !== "") {
         var id = Number($stateParams.id);
-        $scope.scrollTo(id);
+        $scope.selectAddon(id);
     }
 }])
 .controller('DZAPController', ['$scope','$sce', function($scope,$sce){
@@ -84,19 +74,20 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
         name: "DayZ Epoch Addon Pack",
         downloadLink: "https://github.com/mudzereli/DayZ-Addon-Pack/archive/master.zip",
         version: [
-            {name: "1.4.0", desc:"Map Marker Options: DZE_MAP_MARKER_VEHICLE_KEY_ONLY, DZE_MAP_MARKER_ZOMBIE_RANGE, DZE_MAP_MARKER_VEHICLE_RANGE, DZE_MAP_MARKER_FRIENDLY_RANGE"},
-            {name: "1.3.0", desc:"Additional map marker addon features"},
-            {name: "1.2.0", desc:"Addon for kits/rewards (spawn items in lockable safes)."},
-            {name: "1.1.3", desc:"Fix potential take clothes exploit."},
-            {name: "1.1.2", desc:"Fix hidden objects in deployable bike addon."},
-            {name: "1.1.1", desc:"Fix bug with clothes taking addon."},
-            {name: "1.1.0", desc:"Addon for taking clothes from bodies with mappable config."},
-            {name: "1.0.1", desc:"Package mods together correctly."},
-            {name: "1.0.0", desc:"First release."}
+            {name: "1.4.0", date: "7/28/2014", desc:"Map Marker Options: DZE_MAP_MARKER_VEHICLE_KEY_ONLY, DZE_MAP_MARKER_ZOMBIE_RANGE, DZE_MAP_MARKER_VEHICLE_RANGE, DZE_MAP_MARKER_FRIENDLY_RANGE"},
+            {name: "1.3.0", date: "7/25/2014", desc:"Additional map marker addon features"},
+            {name: "1.2.0", date: "7/25/2014", desc:"Addon for kits/rewards (spawn items in lockable safes)."},
+            {name: "1.1.3", date: "7/24/2014", desc:"Fix potential take clothes exploit."},
+            {name: "1.1.2", date: "7/22/2014", desc:"Fix hidden objects in deployable bike addon."},
+            {name: "1.1.1", date: "7/22/2014", desc:"Fix bug with clothes taking addon."},
+            {name: "1.1.0", date: "7/20/2014", desc:"Addon for taking clothes from bodies with mappable config."},
+            {name: "1.0.1", date: "7/20/2014", desc:"Package mods together correctly."},
+            {name: "1.0.0", date: "7/19/2014", desc:"First release."}
         ],
         mods: [
             {
                 name: "Weapon Mods",
+                color: "primary",
                 desc: [
                     "Lets players right click weapons and remove mods and then apply them to other weapons.",
                     "For example, you can take an ACOG scope off of an M4A1 and put it on a SA58, add Gold Paint to a revolver, etc.",
@@ -180,6 +171,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
             },
             {
                 name: "Map Markers",
+                color: "warning",
                 desc: [
                     "Adds options for setting markers when right clicking a Map or GPS.",
                     "Each option can be disabled or enabled in the configuration file."
@@ -265,6 +257,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
             },
             {
                 name: "Take Clothes",
+                color: "info",
                 desc: [
                     "Allows players to take clothes from AI, Players, and Zombies when scrolling over them.",
                     "It can be configured to use your own mappings so you can add whatever clothes you want to existing models."
@@ -303,6 +296,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
             },
             {
                 name: "Deploy Anything",
+                color: "success",
                 desc: [
                     "A deploy bike addon that can be configured to deploy pretty much any vehicle or building.",
                     "The greatest thing this addon is that it is that it is **extremely versatile** and covers a range of building needs.",
@@ -375,6 +369,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
             },
             {
                 name: "Safe Suicide",
+                color: "warning",
                 desc: [
                     "This is an addon for allowing players to kill themselves easier.",
                     "The suicide option is brought up by right-clicking your handgun so it's much safer and there is not much possibility of accidental suicide.",
@@ -432,6 +427,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
             },
             {
                 name: "Reward Kits",
+                color: "success",
                 desc: [
                     "A wonderful tool for rewarding your top donators or players.",
                     "You add players to an admin list, and then when they right-click a 'Personal Safe' item, it gives them the option to spawn a reward kit.",
@@ -477,7 +473,8 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
                 }
             },
             {
-                name: "Right Click Actions",
+                name: "Click Actions",
+                color: "primary",
                 desc: [
                     "This addon is the core of many other addons used in this pack.",
                     "It is used to add scripts/code/etc to right-click options.",
@@ -492,7 +489,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
                 hasGallery: false,
                 gallery: $sce.trustAsResourceUrl("coming soon..."),
                 config: {
-                    title: "Right Click Actions",
+                    title: "Click Actions",
                     desc: "These config options are for the click-actions addon. This allows you to add custom actions when you right click-items, such as self-bloodbag and view distance.",
                     settings: [
                         {

@@ -1,55 +1,65 @@
-<div class="col-sm-8">
-    <div ng-hide="isAddonSelected()" class="jumbotron">
-        <h3>DZAP (<b>D</b>ay<b>Z</b> Epoch <b>A</b>ddon <b>P</b>ack) consists of multiple modifications that can be disabled or enabled separately in a centralized config.
-        <hr>
-        <h3>This page lists general information regarding the addons that are included in <b>DZAP</b>.</h3>
-        <h4>Each addon is highly customizable and most function independently of eachother.</h4>
-        <h4>Click an addon on the right to view the features and some screenshots of the addon in action. &raquo;</h4>
-        <hr>
-        <h5>For more information about specifically configuring addons, visit the <a ui-sref="config">configuration</a> page.</h5>
-    </div>
-    <div ng-show="isAddonSelected()">
-        <h1 class="text-center">
-            {{activeAddon.name}}
-        </h1>
-        <div class="text-right">
-            <a ng-href="#config/{{activeAddonID}}">
-                <small>
-                    Configuration/Setup Instructions &raquo;
-                </small>
-            </a>
-        </div>
-        <div ng-hide="activeAddon.desc.length == 0">
-            <hr>
-            <h3>Description</h3>
-            <div marked="activeAddon.desc.join('\n\n')"></div>
-        </div>
-        <div ng-hide="activeAddon.features.length == 0">
-            <hr>
-            <h3>Features</h3>
-            <div marked="activeAddon.features.join('\n\n')"></div>
-        </div>
-        <div ng-show="activeAddon.hasGallery">
-            <hr>
-            <h3>Gallery</h3>
-            <iframe class="imgur-album" width="100%" height="550" frameborder="0" ng-src="{{activeAddon.gallery}}" ng-show="activeAddon.hasGallery"></iframe>
-        </div>
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="nav nav-pills nav-justified">
+            <li ng-class="{active: isAddonSelected(-1)}" ng-click="selectAddon(-1)"><a href="">All</a></li>
+            <li ng-class="{active: isAddonSelected($index)}" ng-repeat="mod in addon.mods" tooltip-html-unsafe="{{mod.desc[0]}}" tooltip-append-to-body="true" tooltip-placement="bottom" ng-click="selectAddon($index)"><a href="">{{mod.name}}</a></li>
+        </ul>
     </div>
 </div>
-<div class="col-sm-2">
-    <div class="affix">
+<hr>
+<div class="row" ng-show="isAddonSelected(-1)">
+    <div class="col-sm-10">
+        <div class="jumbotron">
+            <h3>DZAP (<b>D</b>ay<b>Z</b> Epoch <b>A</b>ddon <b>P</b>ack) consists of multiple modifications that can be disabled or enabled separately in a centralized config.
+            <hr>
+            <h3>This page lists general information regarding the addons that are included in <b>DZAP</b>.</h3>
+            <h4>Each addon is highly customizable and most function independently of eachother.</h4>
+            <h4>Click an addon on the right to view the features and some screenshots of the addon in action. &raquo;</h4>
+            <hr>
+            <h5>For more information about specifically configuring addons, visit the <a ui-sref="config">configuration</a> page.</h5>
+        </div>
+    </div>
+    <div class="col-sm-2">
         <a href="{{addon.downloadLink}}" target="_blank" class="btn btn-success btn-block">
-            <i class="fa fa-download"></i>
+            <i class="fa fa-download pull-left"></i>
             Download DZAP
         </a>
         <a ui-sref="install" class="btn btn-info btn-block">
-            <i class="fa fa-question"></i>
+            <i class="fa fa-question pull-left"></i>
             Installation
         </a>
+        <a ng-href="#config/" class="btn btn-danger btn-block">
+            <i class="fa fa-book pull-left"></i>
+            Configuration
+        </a>
+    </div>
+</div>
+<div class="row" ng-show="!isAddonSelected(-1)">
+    <div class="col-sm-9">
+        <h2>{{activeAddon.name}}</h2>
+        <div marked="activeAddon.desc.join('\n\n')"></div>
+        <div class="row">
+        </div>
         <hr>
-        <h3 class="text-center">Included Mods</h3>
-        <ul class="nav nav-pills nav-stacked">
-            <li ng-class="{active: activeAddonID == $index}" ng-repeat="mod in addon.mods" tooltip-html-unsafe="{{mod.desc[0]}}" tooltip-append-to-body="true" tooltip-placement="right"><a href="#/about/{{$index}}">{{mod.name}}</a></li>
-        </ul>
+        <div ng-show="activeAddon.hasGallery">
+            <iframe class="imgur-album" width="100%" height="550" frameborder="0" ng-src="{{activeAddon.gallery}}" ng-show="activeAddon.hasGallery"></iframe>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <h3>Features</h3>
+        <div marked="activeAddon.features.join('\n\n')"></div>
+        <hr>
+        <a href="{{addon.downloadLink}}" target="_blank" class="btn btn-success btn-block">
+            <i class="fa fa-download pull-left"></i>
+            Download DZAP
+        </a>
+        <a ui-sref="install" class="btn btn-info btn-block">
+            <i class="fa fa-question pull-left"></i>
+            Installation
+        </a>
+        <a ng-href="#config/{{activeAddonID}}" class="btn btn-danger btn-block">
+            <i class="fa fa-book pull-left"></i>
+            {{activeAddon.name}} Configuration
+        </a>
     </div>
 </div>

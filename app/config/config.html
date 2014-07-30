@@ -1,54 +1,92 @@
-<div class="col-sm-8">
-    <h2>Configuration / Setup Documentation</h2>
-    <h4>These options are all found in the <b>DZAP_config.sqf</b> file in the root of your mission PBO</h4>
+<div class="col-xs-12">
+    <ul class="nav nav-pills nav-justified">
+        <li ng-class="{active: isAddonSelected(-1)}" ng-click="selectAddon(-1)"><a href="">All</a></li>
+        <li ng-class="{active: isAddonSelected($index)}" ng-repeat="mod in addon.mods" tooltip-html-unsafe="{{mod.desc[0]}}" tooltip-append-to-body="true" tooltip-placement="bottom" ng-click="selectAddon($index)"><a href="">{{mod.name}}</a></li>
+    </ul>
     <hr>
-    <div ng-repeat="mod in addon.mods | filter:search" id="{{$index}}">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4>{{mod.config.title}}</h4>
-            </div>
-            <div class="panel-body">
-                {{mod.config.desc}}
-            </div>
-            <div accordion class="col-sm-12" close-others="true">
-                <div accordion-group="" heading="setting.name" is-open="setting.open" ng-repeat="setting in mod.config.settings | filter:search">
-                    <div accordion-heading="">
-                        <div tooltip="{{setting.desc}}" tooltip-placement="left">
-                            <b>{{setting.name}}</b>
-                            <i class="pull-right fa" ng-class="{'fa-chevron-down': setting.open, 'fa-chevron-right': !setting.open}"></i>
+</div>
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-8">
+                    Configuration / Setup Documentation
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <input class="form-control" type="text" placeholder="Search Anything..." ng-model="search"/>
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary" tooltip="Clear Input" ng-click="clearSearch()">
+                                <i class="fa fa-refresh"></i>
+                            </button>
                         </div>
                     </div>
-                    <small>{{setting.desc}}</small>
-                    <hr>
-                    <div tabset="">
-                        <div tab="" heading="Format">
-                            <br>
-                            <div hljs source="setting.format.join('\n')"></div>
-                            <div ng-if="setting.params">
-                                <hr>
-                                <table class="table table-responsive table-striped table-bordered">
-                                    <thead>
-                                        <th>Parameter</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
-                                        <th>Example</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="param in setting.params">
-                                            <td>{{param.name}}</td>
-                                            <td>{{param.desc}}</td>
-                                            <td>{{param.type}}</td>
-                                            <td>{{param.example}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    These options are all found in the <b>DZAP_config.sqf</b> file in the root of your mission PBO
+                </div>
+            </div>
+            <hr>
+            <div class="row" ng-show="!isAddonSelected(-1)">
+                <div class="col-sm-12">
+                    <h4>{{addon.mods[activeAddonID].config.title}}</h4>
+                    <div marked="addon.mods[activeAddonID].desc.join('\n\n')"></div>
+                </div>
+            </div>
+            <hr ng-show="!isAddonSelected(-1)">
+            <div class="row">
+                <div accordion class="col-sm-12" close-others="true">
+                    <div ng-repeat="mod in addon.mods" ng-show="isAddonSelected($index) || isAddonSelected(-1)">
+                        <div  accordion-group="" is-open="accordionOpen" ng-repeat="setting in mod.config.settings | filter:search">
+                            <div accordion-heading="">
+                                <div tooltip="{{setting.desc}}" tooltip-placement="left">
+                                    <div class="col-sm-2">
+                                        <span class="label label-{{mod.color}}">{{mod.name}}</span>
+                                    </div>
+                                    <b>{{setting.name}}</b>
+                                    <i class="pull-right fa" ng-class="{'fa-chevron-down': accordionOpen, 'fa-chevron-right': !accordionOpen}"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div tab="" heading="Example">
-                            <br>
-                            <div hljs source="setting.sample.join('\n')"></div>
+                            <small>{{setting.desc}}</small>
                             <hr>
-                            {{setting.sampleDesc}}
+                            <div tabset="">
+                                <div tab="" heading="Format">
+                                    <br>
+                                    <div hljs source="setting.format.join('\n')"></div>
+                                    <div ng-if="setting.params">
+                                        <hr>
+                                        <table class="table table-responsive table-striped table-bordered">
+                                            <thead>
+                                                <th>Parameter</th>
+                                                <th>Description</th>
+                                                <th>Type</th>
+                                                <th>Example</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="param in setting.params">
+                                                    <td>{{param.name}}</td>
+                                                    <td>{{param.desc}}</td>
+                                                    <td>{{param.type}}</td>
+                                                    <td>{{param.example}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div tab="" heading="Example">
+                                    <br>
+                                    <div hljs source="setting.sample.join('\n')"></div>
+                                    <hr>
+                                    {{setting.sampleDesc}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -57,31 +95,4 @@
         </div>
     </div>
     <div class="clearfix" style="padding-bottom: 750px;"></div>
-</div>
-<div class="col-sm-2">
-    <div class="affix">
-        <a href="{{addon.downloadLink}}" target="_blank" class="btn btn-success btn-block">
-            <i class="fa fa-download"></i>
-            Download DZAP
-        </a>
-        <hr>
-        <h3 class="text-center">Mod Configuration</h3>
-        <ul class="nav nav-pills nav-stacked">
-            <li ng-class="{active: isAddonSelected($index)}" ng-repeat="mod in addon.mods" tooltip-html-unsafe="{{mod.desc[0]}}" tooltip-append-to-body="true" tooltip-placement="right" ng-click="scrollTo($index);"><a href="">{{mod.name}}</a></li>
-        </ul>
-        <hr>
-        <a ng-click="scrollTop()" class="btn btn-default btn-block">To Top <i class="fa fa-level-up"></i></a>
-        <hr>
-        <div class="input-group">
-            <div class="input-group-addon">
-                <i class="fa fa-search"></i>
-            </div>
-            <input class="form-control" type="text" placeholder="Search Anything..." ng-model="search"/>
-            <div class="input-group-btn">
-                <button class="btn btn-primary" tooltip="Clear Input" ng-click="clearSearch()">
-                    <i class="fa fa-refresh"></i>
-                </button>
-            </div>
-        </div>
-    </div>
 </div>
