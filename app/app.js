@@ -69,7 +69,7 @@ angular.module('DZAP', ['ui.router','hc.marked','ui.bootstrap','hljs'])
         $scope.selectAddon(id);
     }
 }])
-.controller('DZAPController', ['$scope','$sce', function($scope,$sce){
+.controller('DZAPController', ['$scope','$sce', function($scope,$sce) {
     $scope.addon = {
         name: "DayZ Epoch Addon Pack",
         downloadLink: "https://github.com/mudzereli/DayZ-Addon-Pack/archive/master.zip",
